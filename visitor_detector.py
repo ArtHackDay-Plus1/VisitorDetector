@@ -34,7 +34,7 @@ class Visitor_detector:
                 self.train_depth = pickle.load(f)
                 
         else:
-            train_frame = 100
+            train_frame = 1000
             train_depth = [get_depth()[horizonY] for _ in tqdm(range(train_frame))]
             train_depth = np.array(train_depth)
 
@@ -76,10 +76,7 @@ if __name__ == "__main__":
         for i in range(width):
             radar[new_depth[i], i] = 1
 
-        """
-        cv2.line(img, (0, horizonY), (width, horizonY), (0), 2)
         cv2.imshow("Radar", radar)
-        """
         cv2.line(img, (0, horizonY), (width, horizonY), (0), 2)
         cv2.imshow("Depth", img)
         
